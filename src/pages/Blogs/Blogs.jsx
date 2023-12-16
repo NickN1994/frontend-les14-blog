@@ -2,10 +2,10 @@ import posts from '../../constants/data.json';
 import {Link, useParams} from "react-router-dom";
 import React from "react";
 import BlogListHelper from "./BlogListHelper.jsx";
-import {post} from "axios";
+
 
 function Blogs() {
-    console.log(posts);
+
     const {id} = useParams();
 
 
@@ -15,17 +15,16 @@ function Blogs() {
             <div className='inner-container'>
 
                 {posts.map((post) => {
+                    return (
                 <BlogListHelper
-                id={post.id}
+                key={post.id}
                 title={post.title}
-                subtitle={post.subtitle}
-                content={post.content}
-                created={post.created}
+              
                 author={post.author}
-                readTime={post.readTime}
+
                 comments={post.comments}
                 shares={post.shares}
-                />
+                /> )
                 })}
             </div>
         </div>
