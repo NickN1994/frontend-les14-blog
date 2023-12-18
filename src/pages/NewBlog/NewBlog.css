@@ -6,13 +6,10 @@ h2 {
 fieldset {
     width: 650px;
     border: 0;
-}
-
-section {
     display: flex;
     flex-direction: column;
-
 }
+
 
 input {
     margin-bottom: 25px;

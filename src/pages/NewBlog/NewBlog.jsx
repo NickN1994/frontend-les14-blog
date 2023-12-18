@@ -1,67 +1,54 @@
-import './NewBlog.css'
-import Formfield from "./Formfield.jsx";
-import {useState} from "react";
-import Formarea from "./Formarea.jsx";
+import React from 'react';
+import { useForm } from 'react-hook-form';
+import './NewBlog.css';
+
+function NewBlog() {
+    const form = useForm();
+    const { register, handleSubmit } = form;
+
+    const formValues = {
+        title: '',
+        subtitle: '',
+        name: '',
+        blogpost: '',
+    };
+
+    const onSubmit = (data) => {
+        console.log('Blog is toegevoegd', data);
 
 
-function NewBlog () {
+        console.log('Form Values:', formValues);
+    };
 
-const [title, setTitle] = useState('');
-const [subtitle, setSubtitle] = useState('');
-const [name, setName] = useState('');
-const [blogPost, setBlogPost] = useState('');
-    const handleSubmit = (event) => {
-        event.preventDefault();
-    }
     return (
         <div className="outer-container">
             <div className="inner-container">
-                <form onSubmit={handleSubmit}>
+                <form onSubmit={handleSubmit(onSubmit)}>
                     <fieldset>
                         <h2>Post Toevoegen</h2>
-                        <Formfield
-                            label={"Title"}
-                            type={"text"}
-                            id={"title"}
-                            name={"title"}
-                            value={title}
-                            onChange={(e) => setTitle(e.target.value)}
-                        />
-                        <Formfield
-                            label={"Subtitle"}
-                            type={"text"}
-                            id={"subtitle"}
-                            name={"subtitle"}
-                            value={subtitle}
-                            onChange={(e) => setSubtitle(e.target.value)}
-                        />
-                        <Formfield
-                            label={"Voor- en achternaam"}
-                            type={"text"}
-                            id={"name"}
-                            name={"name"}
-                            value={name}
-                            onChange={(e) => setName(e.target.value)}
-                        />
-                        <Formarea
-                            label={"Blogpost"}
-                            type={"textarea"}
-                            id={"blogpost"}
-                            name={"blogpost"}
-                            rows={"15"}
-                            cols={"40"}
-                            value={blogPost}
-                            onChange={(e) => setBlogPost(e.target.value)}
-                        />
+                        <label htmlFor="title">Title</label>
+                        <input type="text" id="title" {...register('title')} />
+
+                        <label htmlFor="subtitle">Subtitle</label>
+                        <input type="text" id="subtitle" {...register('subtitle')} />
+
+                        <label htmlFor="name">Voor- en achternaam</label>
+                        <input type="text" id="name" {...register('name')} />
+
+                        <label htmlFor="blogpost">Blogpost</label>
+                        <textarea
+                            name="blogpost"
+                            id="blogpost"
+                            cols="30"
+                            rows="10"
+                            {...register('blogpost')}
+                        ></textarea>
                     </fieldset>
-
-
-
+                    <button type="submit">Toevoegen</button>
                 </form>
             </div>
-
         </div>
-    )
+    );
 }
 
 export default NewBlog;
