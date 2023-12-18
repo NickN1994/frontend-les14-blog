@@ -6,6 +6,7 @@ import BlogDetails from "./pages/Blogs/BlogDetails.jsx";
 import Blogs from "./pages/Blogs/Blogs.jsx"
 import Home from "./pages/Home/Home.jsx";
 import NewBlog from "./pages/NewBlog/NewBlog.jsx";
+import Footer from "./pages/Footer/Footer.jsx";
 
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
                 <Route path="/blogs/:id" element={<BlogDetails/>}/>
                 {/*<Route path="/page-not-found" element={<PageNotFound/>}/>*/}
             </Routes>
+            <Footer/>
         </>
     )
 }

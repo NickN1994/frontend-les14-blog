@@ -1,6 +1,7 @@
 import posts from '../../constants/data.json';
 import {Link, useParams} from "react-router-dom";
 import React from "react";
+import './Blogs.css'
 import BlogListHelper from "./BlogListHelper.jsx";
 
 
@@ -16,15 +17,17 @@ function Blogs() {
 
                 {posts.map((post) => {
                     return (
-                <BlogListHelper
-                key={post.id}
-                title={post.title}
-              
-                author={post.author}
+                        <div className='blogs'>
+                            <BlogListHelper
+                                key={post.id}
+                                title={post.title}
 
-                comments={post.comments}
-                shares={post.shares}
-                /> )
+                                author={post.author}
+                                id={post.id}
+                                comments={post.comments}
+                                shares={post.shares}
+                            /></div>)
+
                 })}
             </div>
         </div>

@@ -1,8 +1,11 @@
-
-function Home () {
+function Home() {
     return (
         <>
-        <h1>dit is een test van home</h1>
+            <div className='outer-container'>
+                <div className='inner-container'>
+                        <h1>Bij Blogventure geloven we in de kracht van woorden</h1>
+                </div>
+            </div>
         </>
     )
 }
