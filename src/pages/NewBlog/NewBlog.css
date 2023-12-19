@@ -1,0 +1,17 @@
+h2 {
+    text-align: center;
+    font-size: 3em;
+}
+
+fieldset {
+    width: 650px;
+    border: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+
+input {
+    margin-bottom: 25px;
+    padding: 0 15px;
+}
