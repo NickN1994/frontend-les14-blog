@@ -1,34 +1,40 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import './NewBlog.css';
+import calculateReadTime from "../../helpers/calculateReadtime.js";
+import {useNavigate} from 'react-router-dom';
 
 function NewBlog() {
     const form = useForm();
     const { register, handleSubmit, formState } = form;
     const {errors} = formState;
 
+    const navigate = useNavigate();
+
     // vragen daniel:
     // 1. Hoe log ik ingevoerde data met readtime, shares etc.
     // 2. Footer op blog pagina niet correct
 
-    const formValues = {
-        title: '',
-        subtitle: '',
-        name: '',
-        blogpost: '',
-    };
 
-    const onSubmit = (data) => {
-        console.log('Blog is toegevoegd', data);
+    const handleFromSubmit = (data) => {
+
+        console.log({
+            ...data,
+            shares: 0,
+            comments: 0,
+            created: new Date().toISOString(),
+            readTime: data.content ? calculateReadTime(data.content) : 0,
+        });
 
 
-        console.log('Form Values:', formValues);
+        console.log('De blog is succesvol verzameld.');
+        navigate('/blogs');
     };
 
     return (
         <div className="outer-container">
             <div className="inner-container">
-                <form onSubmit={handleSubmit(onSubmit)}>
+                <form onSubmit={handleSubmit(handleFromSubmit)}>
                     <fieldset>
                         <h2>Post Toevoegen</h2>
                         <label htmlFor="title">Title</label>
