@@ -11,19 +11,20 @@ function NewBlog() {
 
     const navigate = useNavigate();
 
-    // vragen daniel:
-    // 1. Hoe log ik ingevoerde data met readtime, shares etc.
+
     // 2. Footer op blog pagina niet correct
 
 
     const handleFromSubmit = (data) => {
+
+        // console.log(data);
 
         console.log({
             ...data,
             shares: 0,
             comments: 0,
             created: new Date().toISOString(),
-            readTime: data.content ? calculateReadTime(data.content) : 0,
+            readTime: calculateReadTime(data.blogpost)
         });
 
 

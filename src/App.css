@@ -22,7 +22,8 @@
     align-items: center;
     flex-grow: 1;
     max-width: 100vw;
-    border: 1px solid red;
+    border: 5px solid red;
+    min-height: 75vh;
 }
 
 .inner-container {
@@ -34,30 +35,20 @@
     flex-direction: column;
     margin: 0 40px 0 40px;
     align-items: center;
-    border: 1px dotted blue;
-    /*min-height: 75vh;*/
-}
-
-.inner-container {
-    flex-basis: 70%; /* Flex-basis aangepast naar een percentage van de beschikbare ruimte */
-    max-width: 70%;
-    flex-grow: 1;
-    flex-shrink: 1;
-    display: flex;
-    flex-direction: column;
-    margin: 0 40px;
-    align-items: center;
-    border: 1px dotted blue;
+    border: 5px dotted green;
 
 }
+
 
 footer {
+    border: 5px solid black;
     background-color: lightgreen;
     padding: 10px;
     text-align: center;
-    max-height: 100px;
+
     width: 100%;
-    position: fixed;
+    /*position: fixed;*/
     bottom: 0;
+    height: 10vh;
 }
 
