@@ -1,41 +1,57 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { useForm } from 'react-hook-form';
 import './NewBlog.css';
 import calculateReadTime from "../../helpers/calculateReadtime.js";
 import {useNavigate} from 'react-router-dom';
+import axios from "axios";
 
 function NewBlog() {
     const form = useForm();
     const { register, handleSubmit, formState } = form;
     const {errors} = formState;
+    const {newBlog, setNewBlog} = useState([]);
 
     const navigate = useNavigate();
 
+    const handleFormSubmit = (data) => {
 
-    // 2. Footer op blog pagina niet correct
+        async function postBlog() {
+            try {
+                const result = await axios.post('http://localhost:3000/posts', {
+                        ...formState,
+                        shares: 0,
+                        comments: 0,
+                        created: new Date().toISOString(),
+                        readtime: 2
 
-
-    const handleFromSubmit = (data) => {
+                });
+                console.log("gelukt, post is toegevoegd")
+                console.log(result.data);
+                setNewBlog(result.data);
+            } catch (e) {
+                console.error(e + "Het is niet gelukt om je blog te posten");
+            }
+        }
 
         // console.log(data);
 
-        console.log({
-            ...data,
-            shares: 0,
-            comments: 0,
-            created: new Date().toISOString(),
-            readTime: calculateReadTime(data.blogpost)
-        });
-
-
-        console.log('De blog is succesvol verzameld.');
-        navigate('/blogs');
+        // console.log({
+        //     ...data,
+        //     shares: 0,
+        //     comments: 0,
+        //     created: new Date().toISOString(),
+        //     readTime: calculateReadTime(data.blogpost)
+        // });
+        //
+        //
+        // console.log('De blog is succesvol verzameld.');
+        // navigate('/blogs');
     };
 
     return (
         <div className="outer-container">
             <div className="inner-container">
-                <form onSubmit={handleSubmit(handleFromSubmit)}>
+                <form onSubmit={handleSubmit(handleFormSubmit)}>
                     <fieldset>
                         <h2>Post Toevoegen</h2>
                         <label htmlFor="title">Title</label>
@@ -73,8 +89,8 @@ function NewBlog() {
                                     value: true,
                                     message: 'blogpost is verplicht'},
                             minLength: {
-                                    value: 200,
-                                message: 'Dit veld moet minstens 200 karakters hebben'
+                                    value: 10,
+                                message: 'Dit veld moet minstens 10 karakters hebben'
                             },
                                 maxLength: {
                                     value: 3000,

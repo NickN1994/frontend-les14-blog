@@ -35,10 +35,13 @@ function Blogs() {
         <>
             {
                 /*VRAAG
-            Ik heb nu wel alle blogs zichtbaar op de pagina.
+            1. Ik heb nu wel alle blogs zichtbaar op de pagina.
             Maar in de console worden de blogs wel telkens opnieuw geladen.
             ook als ik eerst naar een andere pagina ga en weer terug naar de blog pagina,
             dan wordt alles opnieuw geladen. Ik dacht dat met useEffect dit niet mogelijk was ?
+
+            2. Als ik naar url blog/400 ga die niet bestaat dan wordt de 404 pagina niet weergegeven.
+            bij andere url zoals /bloggggg dan wordt die wel weergegeven
 
 
             */}
